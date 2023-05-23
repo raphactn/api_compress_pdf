@@ -9,11 +9,14 @@ Esta API permite comprimir arquivos PDF usando o Ghostscript. Ela aceita um arqu
 
 ## Instalação
 
-Certifique-se de ter o Node.js instalado na sua máquina.
+1 - Faça o download e instalação do GhostScript. https://ghostscript.com/releases/gsdnld.html
 
-Faça o clone deste repositório para o seu ambiente local.
+2 - Certifique-se de ter o Node.js instalado na sua máquina.
 
-Instale as dependências do projeto executando o seguinte comando no terminal:
+3 - Faça o clone deste repositório para o seu ambiente local.
+
+4 - Instale as dependências do projeto executando o seguinte comando no terminal:
+
 
 ```bash
  npm install
