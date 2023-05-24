@@ -13,7 +13,7 @@ export const getProxyServices = async () => {
     .build();
 
   try {
-    await driver.get("https://www.sslproxies.org/");
+    await driver.get("https://www.proxynova.com/proxy-server-list/country-br/");
 
     await driver.sleep(1000);
 
@@ -29,7 +29,7 @@ export const getProxyServices = async () => {
       await list[i]
         .getText()
         .then((text) => {
-          if (text.includes("anonymous")) {
+          if (text.includes(".")) {
             const textSplit = text.split(" ");
             listProxy.push(`${textSplit[0]}:${textSplit[1]}`);
           }
