@@ -43,6 +43,7 @@ export const getProxyServices = async () => {
 
     return proxy;
   } finally {
+    await driver.close();
     await driver.quit();
   }
 };
