@@ -1,5 +1,5 @@
-const { exec } = require("child_process");
-const fs = require("fs");
+import { exec } from "child_process";
+import fs from "fs";
 
 const compressPDF = async (inputPath, outputPath, quality = 0) => {
   return new Promise((resolve, reject) => {
@@ -29,7 +29,7 @@ const deleteFile = (filePath) => {
   });
 };
 
-const compressPdfServices = async ({ file }) => {
+export const compressPdfServices = async ({ file }) => {
   try {
     const inputFile = `./src/public/${file.filename}`;
     const outputFile = `./src/public/${file.filename}-compressed.pdf`;
@@ -48,5 +48,3 @@ const compressPdfServices = async ({ file }) => {
     return false;
   }
 };
-
-module.exports = compressPdfServices;
