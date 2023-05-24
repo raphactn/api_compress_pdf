@@ -1,4 +1,4 @@
-import { Builder, Browser, By } from "selenium-webdriver";
+import { Builder, Browser, By, until } from "selenium-webdriver";
 
 export const getProxyServices = async () => {
   let proxy = null;
@@ -9,13 +9,9 @@ export const getProxyServices = async () => {
       "https://vpnoverview.com/privacy/anonymous-browsing/free-proxy-servers/"
     );
 
-    const elemento = await driver.findElement(
-      By.css("#post-331324 > div.post__content > div.scrollable.has-scroll")
-    );
-
-    await driver.executeScript("arguments[0].scrollIntoView();", elemento);
-
     await driver.sleep(1000);
+
+    await driver.wait(until.elementLocated(By.tagName("tr")));
 
     const list = await driver.findElements(By.tagName("tr"));
 
