@@ -5,9 +5,7 @@ export const getProxyServices = async () => {
 
   let driver = await new Builder().forBrowser(Browser.CHROME).build();
   try {
-    await driver.get(
-      "https://vpnoverview.com/privacy/anonymous-browsing/free-proxy-servers/"
-    );
+    await driver.get("https://www.sslproxies.org/");
 
     await driver.sleep(1000);
 
@@ -23,7 +21,7 @@ export const getProxyServices = async () => {
       await list[i]
         .getText()
         .then((text) => {
-          if (text.includes("HTTPS")) {
+          if (text.includes("anonymous")) {
             const textSlit = text.split(" ");
             listProxy.push(`${textSlit[0]}:${textSlit[1]}`);
           }
