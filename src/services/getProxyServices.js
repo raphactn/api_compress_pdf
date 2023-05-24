@@ -1,9 +1,17 @@
 import { Builder, Browser, By, until } from "selenium-webdriver";
+import chrome from "selenium-webdriver/chrome.js";
 
 export const getProxyServices = async () => {
   let proxy = null;
 
-  let driver = await new Builder().forBrowser(Browser.CHROME).build();
+  const options = new chrome.Options();
+  options.addArguments("--headless");
+
+  const driver = await new Builder()
+    .forBrowser(Browser.CHROME)
+    .setChromeOptions(options)
+    .build();
+
   try {
     await driver.get("https://www.sslproxies.org/");
 
@@ -21,9 +29,9 @@ export const getProxyServices = async () => {
       await list[i]
         .getText()
         .then((text) => {
-          if (text.includes("anonymous") && text.includes("8080")) {
-            const textSlit = text.split(" ");
-            listProxy.push(`${textSlit[0]}:${textSlit[1]}`);
+          if (text.includes("anonymous")) {
+            const textSplit = text.split(" ");
+            listProxy.push(`${textSplit[0]}:${textSplit[1]}`);
           }
         })
         .catch((error) => {
