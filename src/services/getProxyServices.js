@@ -23,7 +23,9 @@ export const getProxyServices = async () => {
         .then((text) => {
           if (text.includes("anonymous")) {
             const textSlit = text.split(" ");
-            listProxy.push(`${textSlit[0]}:${textSlit[1]}`);
+            if (textSlit[5] === "yes") {
+              listProxy.push(`${textSlit[0]}:${textSlit[1]}`);
+            }
           }
         })
         .catch((error) => {
