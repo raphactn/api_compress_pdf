@@ -21,11 +21,13 @@ export const getProxyServices = async () => {
       await list[i]
         .getText()
         .then((text) => {
-          if (text.includes("anonymous")) {
+          if (
+            text.includes("anonymous") &&
+            text.includes("yes") &&
+            !text.includes(" no ")
+          ) {
             const textSlit = text.split(" ");
-            if (textSlit[5] === "yes") {
-              listProxy.push(`${textSlit[0]}:${textSlit[1]}`);
-            }
+            listProxy.push(`${textSlit[0]}:${textSlit[1]}`);
           }
         })
         .catch((error) => {
